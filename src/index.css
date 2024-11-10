@@ -1,13 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,900;1,900&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: #1e1e1e;
+  color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  text-align: center;
+  font-family: Urbanist;
+  font-size: 29px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 29px; /* 100% */
+  letter-spacing: -1.45px;
+}
+
+p {
+  text-align: center;
+  font-family: Urbanist;
+  font-size: 123px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 123px; /* 100% */
+  letter-spacing: -6.15px;
+}
+.main {
+  display: flex;
+  padding: 0vh 40px 0vh 40px;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  gap: 192px;
 }
