@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Maison8/static/css/main.c0a47408.css",
+    "main.js": "/Maison8/static/js/main.7f968833.js",
+    "index.html": "/Maison8/index.html",
+    "main.c0a47408.css.map": "/Maison8/static/css/main.c0a47408.css.map",
+    "main.7f968833.js.map": "/Maison8/static/js/main.7f968833.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0a47408.css",
+    "static/js/main.7f968833.js"
+  ]
+}
