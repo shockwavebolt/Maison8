@@ -1,34 +1,857 @@
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,900;1,900&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
+  margin: 0;
+}
+
+.hero {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  width: 100%; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  margin: 0;
+  padding: 0; /* Remove unnecessary padding for proper centering */
+  flex-direction: column;
   background: #1e1e1e;
   color: #fff;
+}
+
+.navBar {
+  /* layout */
+  display: inline-flex;
+  padding: 8px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  /* style */
+  border-radius: 0px 0px 96px 96px;
+  border-right: 1px solid #bcbcbc;
+  border-bottom: 1px solid #bcbcbc;
+  border-left: 1px solid #bcbcbc;
+  background: #fff;
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.04);
+  /* Position */
+  top: -100%; /* Start off-screen */
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Animation */
+  animation: slideDown 2s cubic-bezier(0.42, 0, 0.58, 1) forwards; /* Apply animation */
+  animation-delay: 0.5s; /* Delay before the animation starts */
+}
+.menu {
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  top: -110%;
+  gap: 64px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+  z-index: 900;
+}
+
+.menu a {
+  font-family: Urbanist;
+  font-size: 63px;
+  text-decoration: none;
+  color: #1e1e1e;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.menu a:hover {
+  font-weight: 600;
+}
+
+.menuOpen {
+  animation: slideDown 2s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    top: -100%; /* Start off-screen */
+  }
+  100% {
+    top: 0; /* Slide into view */
+  }
+}
+
+.navBar .links {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.navBar a {
+  font-family: Urbanist;
+  text-decoration: none;
+  color: #1e1e1e;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.navBar a:hover {
+  font-weight: 600;
+}
+
+.hamburger-container {
+  /* Default styles for small screens */
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBarExpand {
+  width: 100%;
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .navBar {
+    padding: 16px 48px;
+  }
+  .navBarExpand {
+    width: auto;
+  }
+
+  .menu {
+    display: none;
+  }
+  .hamburger-container {
+    display: none;
+  }
+  .hamburger {
+    display: none;
+  }
+  .navBar .links {
+    display: flex;
+  }
+}
+
+.hamburger {
+  display: block;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+  outline: none;
+  background: none; /* Remove background */
+  border: none;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background: #000000;
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.open .hamburger-middle {
+  display: none;
+}
+
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translateX(-6px);
 }
 
 h1 {
   text-align: center;
   font-family: Urbanist;
-  font-size: 29px;
   font-style: normal;
-  font-weight: 900;
-  line-height: 29px; /* 100% */
-  letter-spacing: -1.45px;
+  font-weight: 800;
+  line-height: 1;
+  font-size: 390px; /* Default (Desktop size) */
+  letter-spacing: -19.5px;
 }
 
-p {
-  text-align: center;
-  font-family: Urbanist;
-  font-size: 123px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: 123px; /* 100% */
-  letter-spacing: -6.15px;
+@media (max-width: 1439px) {
+  h1 {
+    font-size: 208px; /* Tablet size */
+    letter-spacing: -10.4px;
+  }
 }
-.main {
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 87px; /* Small screen size */
+    letter-spacing: -4.35px;
+  }
+}
+
+.aboutUs {
   display: flex;
-  padding: 0vh 40px 0vh 40px;
+  padding: 96px 40px;
   flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  background: #fff;
+}
+
+.sectionTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+
+  color: #1e1e1e;
+  font-family: Urbanist;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px; /* 130% */
+}
+
+.textContainer {
+  display: flex;
+  padding: 128px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.text1 {
+  color: #1e1e1e;
+  font-family: Urbanist;
+  font-size: 76px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.text1 span {
+  font-style: italic;
+  font-weight: 500;
+}
+/* Desktop starts at 1440px */
+@media (max-width: 1439px) {
+  .text1 {
+    font-size: 63px;
+    line-height: 1.3;
+  }
+  .textContainer {
+    padding: 96px 0px;
+  }
+}
+/* Tablet starts at 768px */
+@media (max-width: 767px) {
+  .text1 {
+    font-size: 48px;
+    line-height: 1.3;
+  }
+
+  .textContainer {
+    padding: 96px 0px;
+  }
+}
+/* Mobile Landscape start at 568px*/
+@media (max-width: 567px) {
+  .aboutUs {
+    padding: 64px 40px;
+  }
+
+  .text1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+}
+
+.selectedWorks {
+  /* Layout */
+  display: flex;
+  padding: 96px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* Style */
+  border-top: 2px solid #bcbcbc;
+  background: #fff;
+}
+
+.selectedWorksContainer {
+  display: flex;
+  padding: 128px;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 100vh;
-  gap: 192px;
+  gap: 96px;
+  align-self: stretch;
+}
+
+.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  align-self: stretch;
+}
+
+.preview {
+  width: 900px;
+  height: 520px;
+  background: #bcbcbc;
+}
+
+.work_Title_Description {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1 0 0;
+  width: 100%; /* Makes the container stretch to its parent width */
+  gap: 32px;
+}
+
+.workTitle {
+  color: #1e1e1e;
+  font-family: Urbanist;
+  font-size: 47px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1; /* 110% */
+}
+
+.description {
+  width: 480px;
+  color: #333;
+  font-family: Quicksand;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px; /* 150% */
+}
+
+.seperator {
+  height: 1px;
+  width: 100%; /* Ensure it spans the container */
+  background-color: #bcbcbc;
+  align-self: stretch; /* Only works in flex containers */
+}
+
+/* Desktop starts at 1440px */
+@media (max-width: 1024px) {
+  .selectedWorksContainer {
+    padding: 128px 96px;
+  }
+  .work_Title_Description {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .preview {
+    width: 100%;
+    height: 400px;
+  }
+
+  .workTitle {
+    width: 100%;
+    text-align: left;
+    font-size: 42px;
+  }
+
+  .description {
+    width: 100%;
+  }
+}
+/* Tablet starts at 768px */
+@media (max-width: 767px) {
+  .selectedWorksContainer {
+    padding: 128px 40px;
+  }
+  .preview {
+    width: 100%;
+    height: 320px;
+  }
+  .workTitle {
+    font-size: 48px;
+  }
+}
+/* Mobile Landscape start at 568px*/
+@media (max-width: 567px) {
+  .selectedWorks {
+    padding: 96px 24px;
+  }
+  .selectedWorksContainer {
+    padding: 64px 0px;
+  }
+  .workTitle {
+    font-size: 20px;
+  }
+  .description {
+    width: 100%;
+  }
+}
+
+.services {
+  /* layout */
+  display: flex;
+  padding: 96px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+
+  /* Style */
+  border-top: 2px solid #bcbcbc;
+  background: #fff;
+}
+
+.servicesContainer {
+  display: flex;
+  padding: 128px 96px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+  align-self: stretch;
+}
+
+.service {
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+}
+
+.serviceTitle {
+  color: #1e1e1e;
+  text-align: left;
+  font-family: Urbanist;
+  font-size: 47px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1; /* 110% */
+}
+
+.serviceDescription {
+  max-width: 600px;
+  color: #333;
+  font-family: Quicksand;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+/* Desktop starts at 1440px */
+@media (max-width: 1439px) {
+  /* .servicesContainer {
+    padding: 128px 0px;
+  }
+  .serviceTitle {
+    font-size: 42px;
+  } */
+}
+/* Tablet starts at 768px */
+@media (max-width: 767px) {
+  .servicesContainer {
+    padding: 128px 40px;
+  }
+  .serviceTitle {
+    font-size: 48px;
+  }
+}
+/* Mobile Landscape start at 568px*/
+@media (max-width: 567px) {
+  .services {
+    padding: 96px 24px;
+  }
+  .serviceTitle {
+    font-size: 26px;
+  }
+
+  .servicesContainer {
+    padding: 128px 0px;
+  }
+
+  .service {
+    padding: 0px;
+  }
+}
+
+.processSection {
+  /* layout */
+  display: flex;
+  padding: 32px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+
+  /* Style */
+  border-top: 2px solid #bcbcbc;
+  background: #fff;
+}
+
+.processContainer {
+  display: flex;
+  padding: 128px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 96px;
+  align-self: stretch;
+}
+
+.process {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+
+  align-self: stretch;
+}
+
+.processLabel {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.processTitle {
+  color: #1e1e1e;
+  font-family: Urbanist;
+  font-size: 47px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1; /* 110% */
+}
+
+.processDescription {
+  max-width: 480px;
+  color: #333;
+  font-family: Quicksand;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+
+@media (max-width: 1220px) {
+  .process {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+  }
+
+  .processDescription {
+    max-width: 600px;
+  }
+}
+/* Tablet starts at 768px */
+@media (max-width: 767px) {
+  .processContainer {
+    padding: 128px 40px;
+  }
+
+  .processTitle {
+    font-size: 48px;
+  }
+}
+/* Mobile Landscape start at 568px*/
+@media (max-width: 567px) {
+  .processContainer {
+    padding: 128px 0px;
+  }
+  .processLabel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .processTitle {
+    font-size: 26px;
+  }
+  .processSection {
+    padding: 32px 24px;
+  }
+}
+
+.ctaSection {
+  display: flex;
+  padding: 128px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-top: 1px solid #fff;
+  background: #1e1e1e;
+}
+
+.ctaText_Form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 96px;
+}
+
+.ctaText {
+  color: #fff;
+  font-family: Urbanist;
+  font-size: 200px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.1; /* 110% */
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  padding: 96px 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 96px;
+  align-self: stretch;
+  border-top: 4px solid #fff;
+}
+
+.formInput {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  align-self: stretch;
+}
+
+label {
+  align-self: stretch;
+  color: #fff;
+  font-family: Urbanist;
+  font-size: 47px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 51.7px; /* 110% */
+}
+
+.underline_input {
+  border: none; /* Remove the default border */
+  border-bottom: 2px solid #fff; /* Add a bottom border */
+  outline: none; /* Remove default focus outline */
+  width: 100%; /* Make the input full width if needed */
+  background: transparent;
+  color: #fff;
+  font-family: Quicksand;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+
+input[type="text"]::placeholder {
+  color: #bcbcbc;
+
+  font-size: inherit;
+}
+
+.radio-buttons input[type="radio"] {
+  display: none;
+}
+
+.radio-buttons {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Style the label as a button */
+.radio-buttons label {
+  display: inline-block;
+  padding: 10px 20px;
+
+  border: 2px solid #fff;
+
+  background-color: none;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Style for the selected (checked) radio button */
+.radio-buttons input[type="radio"]:checked + label {
+  background-color: #fff;
+  color: #1e1e1e;
+}
+
+/* Add a hover effect for better UX */
+.radio-buttons label:hover {
+  color: #1e1e1e;
+  background-color: #fff;
+}
+
+.textarea_input {
+  max-width: 480px;
+  min-height: 200px;
+  padding: 16px 16px;
+  border: 2px solid #fff;
+  outline: none;
+  background-color: #1e1e1e;
+  font-family: Quicksand, sans-serif;
+  color: #fff;
+  font-size: 18px;
+  resize: none;
+}
+
+.textarea_input::placeholder {
+  font-family: Quicksand, sans-serif;
+  font-size: 18px;
+  color: #bcbcbc;
+  text-align: left; /* Ensures placeholder is left-aligned */
+  vertical-align: top; /* Aligns placeholder text at the top */
+}
+
+.formButton {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #fff;
+  background: #1e1e1e;
+
+  cursor: pointer;
+  color: #fff;
+  font-family: Urbanist;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1; /* 110% */
+  transition: box-shadow 0.2s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.formButton:hover {
+  box-shadow: 0px 4px 0px 0px #fff;
+}
+
+.formButton:active {
+  color: #1e1e1e;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 0px;
+  transform: scale(0.95);
+}
+
+@media (max-width: 1440px) {
+  .ctaText {
+    font-size: 143px;
+  }
+}
+/* Tablet starts at 768px */
+@media (max-width: 767px) {
+  .ctaText {
+    font-size: 106px;
+  }
+}
+/* Mobile Landscape start at 568px*/
+@media (max-width: 567px) {
+  .ctaText {
+    font-size: 26px;
+  }
+  .radio-buttons {
+    flex-direction: column;
+  }
+
+  .ctaSection {
+    padding: 32px 24px;
+  }
+  .textarea_input {
+    width: 100%;
+  }
+
+  label {
+    font-size: 26px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%; /* Full width of the viewport */
+  min-height: 600px; /* Full height of the viewport */
+  margin: 0;
+  padding: 0px 0px 24px 0px; /* Remove unnecessary padding for proper centering */
+  background: #fff;
+  color: #1e1e1e;
+}
+
+.footerContent {
+  width: 100%;
+}
+
+.locationAndTime {
+  width: 100%;
+  padding: 40px;
+  font-family: Urbanist;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.copyright {
+  color: #1e1e1e;
+  font-family: Urbanist;
+  font-size: 11.26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11.3px; /* 100.355% */
+}
+
+@media (max-width: 567px) {
+  .footer {
+    min-height: 400px;
+  }
 }
